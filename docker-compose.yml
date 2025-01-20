@@ -12,18 +12,18 @@ services:
     networks:
       - docker-network
 
-  # address_validator:
-  #   build:
-  #     context: ${ADDRESS_VALIDATOR_CONTEXT}
-  #     dockerfile: ../../configs/Dockerfile
-  #   container_name: ${ADDRESS_VALIDATOR_NAME}
-  #   ports:
-  #     - "${ADDRESS_VALIDATOR_PORT}:3000"
-  #   volumes:
-  #    - ${ADDRESS_VALIDATOR_CONTEXT}:/usr/src/app
-  #   command: npx ts-node -r tsconfig-paths/register src/entrypoints/queueConsumer.ts
-  #   networks:
-  #     - docker-network
+  vendor_consolidator:
+    build:
+      context: ${VENDOR_CONSOLIDATOR_CONTEXT}
+      dockerfile: ../../configs/Dockerfile
+    container_name: ${VENDOR_CONSOLIDATOR_NAME}
+    ports:
+      - "${VENDOR_CONSOLIDATOR_PORT}:3000"
+    volumes:
+     - ${VENDOR_CONSOLIDATOR_CONTEXT}:/usr/src/app
+    command: npx ts-node -r tsconfig-paths/register src/entrypoints/queueConsumer.ts
+    networks:
+      - docker-network
 
   # cost_surcharge_collector:
   #   build:
